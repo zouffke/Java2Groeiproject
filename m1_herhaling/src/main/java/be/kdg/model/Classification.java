@@ -1,2 +1,2 @@
-package be.kdg.model;public class Classification {
+package be.kdg.model;public enum Classification {
 }
