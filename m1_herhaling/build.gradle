@@ -4,7 +4,7 @@ plugins {
 }
 
 sourceCompatibility = 17
-mainClassName = 'Demo1'
+mainClassName = 'Demo_1'
 
 group = 'be.kdg.java2'
 version = '1.0-SNAPSHOT'
