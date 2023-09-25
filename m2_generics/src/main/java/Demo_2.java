@@ -1,7 +1,12 @@
+import be.kdg.data.Data;
 import be.kdg.generics.PriorityQueue;
+import be.kdg.model.Sailboat;
+
+import java.util.Random;
 
 public class Demo_2 {
     public static void main(String[] args) {
+        /*
         PriorityQueue<String> myQueue = new PriorityQueue<>();
         myQueue.enqueue("Tokio", 2);
         myQueue.enqueue("Denver", 5);
@@ -16,5 +21,21 @@ public class Demo_2 {
             System.out.println("Dequeue: " + myQueue.dequeue());
         }
         System.out.println("Size na dequeue: " + myQueue.getSize());
+        */
+
+        var random = new Random();
+        var sailboatsQue = new PriorityQueue<>();
+
+        for (Sailboat sailboat : Data.getData()) {
+            sailboatsQue.enqueue(sailboat, random.nextInt(5) + 1);
+        }
+
+        System.out.println("Overzicht van de PriorityQueue:");
+        System.out.println(sailboatsQue.toString());
+        System.out.println("aantal: " + sailboatsQue.getSize());
+        for(int i = 0; i < 4; i++) {
+            System.out.println("Dequeue: " + sailboatsQue.dequeue());
+        }
+        System.out.println("Size na dequeue: " + sailboatsQue.getSize());
     }
 }
