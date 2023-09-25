@@ -36,7 +36,7 @@ public class PriorityQueue<T> implements FIFOQueue<T> {
     @Override
     public T dequeue() {
         for (int i = 5; i >= 1; i--) {
-            if (!QUEUE.get(i).isEmpty()) {
+            if (QUEUE.get(i) != null && !QUEUE.get(i).isEmpty()) {
                 return QUEUE.get(i).remove();
             }
         }
