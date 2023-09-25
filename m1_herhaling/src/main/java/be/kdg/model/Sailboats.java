@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Sailboats {
-    private Set<Sailboat> sailboats;
+    private TreeSet<Sailboat> sailboats;
 
     public Sailboats() {
         this.sailboats = new TreeSet<>();
