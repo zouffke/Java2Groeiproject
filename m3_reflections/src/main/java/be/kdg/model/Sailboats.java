@@ -1,7 +1,10 @@
 package be.kdg.model;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.TreeSet;
 
 public class Sailboats {
     private TreeSet<Sailboat> sailboats;

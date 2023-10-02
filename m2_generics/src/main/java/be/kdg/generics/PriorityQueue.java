@@ -9,7 +9,6 @@ public class PriorityQueue<T> implements FIFOQueue<T> {
 
     public PriorityQueue() {
         QUEUE = new TreeMap<>(Collections.reverseOrder());
-
     }
 
     @Override
