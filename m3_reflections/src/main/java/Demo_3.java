@@ -10,5 +10,12 @@ public class Demo_3 {
         ReflectionTools.classAnalysis(Sailboat.class);
         System.out.println("\n------------------------------------\n");
         ReflectionTools.classAnalysis(Sailboats.class);
+
+        System.out.println("\nAangemaakt Object door runAnnotated:");
+        try {
+            System.out.println(ReflectionTools.runAnnotated(Boat.class));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

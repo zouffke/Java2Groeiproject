@@ -163,9 +163,9 @@ public class Sailboat implements Comparable<Sailboat> {
 
     //region Override methods
     /**
-     * Checks if the boat is in the harbour
-     *
-     * @return true if the boat is in the harbour, false if not
+     * Overrides the equals method
+     * @param o Object to compare to
+     * @return True if equal, false if not
      */
     @Override
     public boolean equals(Object o) {
@@ -176,9 +176,8 @@ public class Sailboat implements Comparable<Sailboat> {
     }
 
     /**
-     * Hashcode for Sailboat
-     *
-     * @return Hashcode for Sailboat
+     * Overrides the hashCode method
+     * @return Hash of the object
      */
     @Override
     public int hashCode() {
@@ -216,26 +215,51 @@ public class Sailboat implements Comparable<Sailboat> {
     //endregion
 
     //region Getters
+
+    /**
+     * Gets the name of the boat
+     * @return Name of the boat
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the harbour where the boat is located
+     * @return Harbour where the boat is located
+     */
     public String getHarbour() {
         return harbour;
     }
 
+    /**
+     * Gets the depth of the boat in Meters
+     * @return Depth of the boat in Meters
+     */
     public double getDepth() {
         return depth;
     }
 
+    /**
+     * Gets the length of the boat in Feet
+     * @return Length of the boat in Feet
+     */
     public int getLength() {
         return length;
     }
 
+    /**
+     * Gets the classification of the boat
+     * @return Classification of the boat
+     */
     public Classification getClassification() {
         return classification;
     }
 
+    /**
+     * Gets the build year of the boat
+     * @return Build year of the boat
+     */
     public LocalDate getBuildYear() {
         return buildYear;
     }

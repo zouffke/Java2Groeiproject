@@ -1,11 +1,13 @@
 package be.kdg.reflection;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 
 public class ReflectionTools {
+    /**
+     * Prints the class name, superclass name, package name, used interfaces, constructors, private attributes and functions of a class.
+     *
+     * @param aClass The class to be analyzed.
+     */
     public static void classAnalysis(Class<?> aClass) {
         StringBuilder sB = new StringBuilder("Analysis of class: ").append(aClass.getSimpleName()).append("\n===================================\n");
 
@@ -49,9 +51,9 @@ public class ReflectionTools {
         StringBuilder functions = new StringBuilder();
 
         for (Method m : aClass.getDeclaredMethods()) {
-            if (m.getName().contains("get")) {
+            if (m.getName().startsWith("get") ) {
                 getter.append("\n\t\t* ").append(m.getName());
-            } else if (m.getName().contains("set")) {
+            } else if (m.getName().startsWith("set") ) {
                 setter.append("\n\t\t*").append(m.getName());
             } else {
                 functions.append("\n\t\t* ").append(m.getName());
@@ -73,5 +75,24 @@ public class ReflectionTools {
         sB.append("\n\tOther functions:").append(functions);
 
         System.out.println(sB);
+    }
+
+    public static Object runAnnotated(Class<?> aClass)
+            throws NoSuchMethodException,
+            SecurityException,
+            InstantiationException,
+            IllegalAccessException,
+            IllegalArgumentException,
+            InvocationTargetException {
+
+        Object o = aClass.getDeclaredConstructor().newInstance();
+
+        for (Method m : o.getClass().getDeclaredMethods()) {
+            CanRun c = m.getDeclaredAnnotation(CanRun.class);
+            if (m.getParameterCount() == 1 && m.getParameterTypes()[0].getSimpleName().equals("String") && c != null){
+                m.invoke(o, c.value());
+            }
+        }
+        return o;
     }
 }
