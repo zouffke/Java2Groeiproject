@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class Demo_2 {
     public static void main(String[] args) {
-        /*
         PriorityQueue<String> myQueue = new PriorityQueue<>();
         myQueue.enqueue("Tokio", 2);
         myQueue.enqueue("Denver", 5);
@@ -21,7 +20,7 @@ public class Demo_2 {
             System.out.println("Dequeue: " + myQueue.dequeue());
         }
         System.out.println("Size na dequeue: " + myQueue.getSize());
-        */
+
 
         var random = new Random();
         var sailboatsQue = new PriorityQueue<>();

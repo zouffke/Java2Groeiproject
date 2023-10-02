@@ -7,7 +7,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class containing all data for the Sailboats
+ *
+ * @author Luca Dandois
+ * @version 1.0
+ * @see Sailboat
+ */
 public class Data {
+    /**
+     * Static method to get all the data for the Sailboats
+     *
+     * @return List of Sailboats
+     */
     public static List<Sailboat> getData() {
         List<Sailboat> sailboats = new ArrayList<>();
 
