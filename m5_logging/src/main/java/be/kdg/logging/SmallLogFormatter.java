@@ -1,9 +1,6 @@
 package be.kdg.logging;
 
-import javax.annotation.processing.Messager;
-import java.text.DateFormat;
 import java.text.MessageFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.logging.Formatter;
