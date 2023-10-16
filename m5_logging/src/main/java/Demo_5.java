@@ -1,6 +1,6 @@
-import model.Classification;
-import model.Sailboat;
-import model.Sailboats;
+import be.kdg.model.Classification;
+import be.kdg.model.Sailboat;
+import be.kdg.model.Sailboats;
 
 import java.io.IOException;
 import java.io.InputStream;

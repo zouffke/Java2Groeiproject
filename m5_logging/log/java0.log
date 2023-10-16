@@ -2,13 +2,13 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-10-16T18:30:25.644906100Z</date>
-  <millis>1697481025644</millis>
-  <nanos>906100</nanos>
+  <date>2023-10-16T20:09:28.017069100Z</date>
+  <millis>1697486968017</millis>
+  <nanos>69100</nanos>
   <sequence>0</sequence>
   <logger>be.kdg.model.Sailboats</logger>
   <level>FINER</level>
-  <class>model.Sailboats</class>
+  <class>be.kdg.model.Sailboats</class>
   <method>add</method>
   <thread>1</thread>
   <message>Sailboat

@@ -1,4 +1,4 @@
-package model;
+package be.kdg.model;
 
 import java.time.LocalDate;
 import java.util.*;
