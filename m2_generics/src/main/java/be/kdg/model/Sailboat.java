@@ -153,7 +153,7 @@ public class Sailboat implements Comparable<Sailboat> {
      * @throws IllegalArgumentException if build year is in the future
      */
     public void setBuildYear(LocalDate buildYear) {
-        if (LocalDate.now().isAfter(buildYear)) {
+        if (LocalDate.now().isAfter(buildYear) || LocalDate.now().equals(buildYear)) {
             this.buildYear = buildYear;
         } else {
             throw new IllegalArgumentException("Build year can not be in the future");

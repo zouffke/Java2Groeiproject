@@ -1,7 +1,8 @@
-package be.kdg.model;
+package model;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 /**
  * Class containing all information about sailboat.
@@ -12,6 +13,7 @@ import java.util.Objects;
  */
 public class Sailboat implements Comparable<Sailboat> {
     //region vars
+    private static final Logger logger = Logger.getLogger("be.kdg.model.Sailboat");
     private String name;
     private String harbour;
     private double depth; //m
@@ -21,7 +23,6 @@ public class Sailboat implements Comparable<Sailboat> {
     //endregion
 
     //region Constructors
-
     /**
      * Constructor for Sailboat
      *
@@ -81,18 +82,16 @@ public class Sailboat implements Comparable<Sailboat> {
     //endregion
 
     //region Setters
-
     /**
      * Sets the name of the boat
      *
      * @param name Name of the boat
-     * @throws IllegalArgumentException if name is less than 1 character long
      */
     public void setName(String name) {
         if (!name.isBlank()) {
             this.name = name;
         } else {
-            throw new IllegalArgumentException("Name can not be les than 1 character long");
+            logger.severe(String.format("Name, %s can not be less than 1 character long", name));
         }
     }
 
@@ -100,13 +99,12 @@ public class Sailboat implements Comparable<Sailboat> {
      * Sets the harbour where the boat is located
      *
      * @param harbour Harbour where the boat is located
-     * @throws IllegalArgumentException if harbour is less than 1 character long
      */
     public void setHarbour(String harbour) {
         if (!harbour.isBlank()) {
             this.harbour = harbour;
         } else {
-            throw new IllegalArgumentException("Harbour can not be les than 1 character long");
+            logger.severe(String.format("Harbour, %s can not be less than 1 character long", harbour));
         }
     }
 
@@ -114,13 +112,12 @@ public class Sailboat implements Comparable<Sailboat> {
      * Sets the depth of the boat in Meters
      *
      * @param depth Depth of the boat in Meters
-     * @throws IllegalArgumentException if depth is less than 0
      */
     public void setDepth(double depth) {
         if (depth >= 0 || depth == -1) {
             this.depth = depth;
         } else {
-            throw new IllegalArgumentException("Depth can not be less than 0");
+            logger.severe(String.format("Depth, %f can not be less than 0", depth));
         }
     }
 
@@ -128,13 +125,12 @@ public class Sailboat implements Comparable<Sailboat> {
      * Sets the length of the boat in Feet
      *
      * @param length Length of the boat in Feet
-     * @throws IllegalArgumentException if length is less than 0
      */
     public void setLength(int length) {
         if (length > 0 || length == -1) {
             this.length = length;
         } else {
-            throw new IllegalArgumentException("Length can not be less than 0");
+            logger.severe(String.format("Length, %d can not be less than 0", length));
         }
     }
 
@@ -152,22 +148,19 @@ public class Sailboat implements Comparable<Sailboat> {
      * Sets the build year of the boat
      *
      * @param buildYear Build year of the boat
-     * @throws IllegalArgumentException if build year is in the future
      */
     public void setBuildYear(LocalDate buildYear) {
         if (LocalDate.now().isAfter(buildYear) || LocalDate.now().equals(buildYear)) {
             this.buildYear = buildYear;
         } else {
-            throw new IllegalArgumentException("Build year can not be in the future");
+            logger.severe(String.format("Build year, %s can not be in the future", buildYear));
         }
     }
     //endregion
 
     //region Override methods
-
     /**
      * Overrides the equals method
-     *
      * @param o Object to compare to
      * @return True if equal, false if not
      */
@@ -181,7 +174,6 @@ public class Sailboat implements Comparable<Sailboat> {
 
     /**
      * Overrides the hashCode method
-     *
      * @return Hash of the object
      */
     @Override
@@ -223,7 +215,6 @@ public class Sailboat implements Comparable<Sailboat> {
 
     /**
      * Gets the name of the boat
-     *
      * @return Name of the boat
      */
     public String getName() {
@@ -232,7 +223,6 @@ public class Sailboat implements Comparable<Sailboat> {
 
     /**
      * Gets the harbour where the boat is located
-     *
      * @return Harbour where the boat is located
      */
     public String getHarbour() {
@@ -241,7 +231,6 @@ public class Sailboat implements Comparable<Sailboat> {
 
     /**
      * Gets the depth of the boat in Meters
-     *
      * @return Depth of the boat in Meters
      */
     public double getDepth() {
@@ -250,7 +239,6 @@ public class Sailboat implements Comparable<Sailboat> {
 
     /**
      * Gets the length of the boat in Feet
-     *
      * @return Length of the boat in Feet
      */
     public int getLength() {
@@ -259,7 +247,6 @@ public class Sailboat implements Comparable<Sailboat> {
 
     /**
      * Gets the classification of the boat
-     *
      * @return Classification of the boat
      */
     public Classification getClassification() {
@@ -268,7 +255,6 @@ public class Sailboat implements Comparable<Sailboat> {
 
     /**
      * Gets the build year of the boat
-     *
      * @return Build year of the boat
      */
     public LocalDate getBuildYear() {

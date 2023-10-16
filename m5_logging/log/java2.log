@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-16T18:28:37.813615400Z</date>
+  <millis>1697480917813</millis>
+  <nanos>615400</nanos>
+  <sequence>0</sequence>
+  <logger>be.kdg.model.Sailboat</logger>
+  <level>SEVERE</level>
+  <class>model.Sailboat</class>
+  <method>setName</method>
+  <thread>1</thread>
+  <message>Name,  can not be less than 1 character long</message>
+</record>
+<record>
+  <date>2023-10-16T18:28:37.890222400Z</date>
+  <millis>1697480917890</millis>
+  <nanos>222400</nanos>
+  <sequence>1</sequence>
+  <logger>be.kdg.model.Sailboat</logger>
+  <level>SEVERE</level>
+  <class>model.Sailboat</class>
+  <method>setHarbour</method>
+  <thread>1</thread>
+  <message>Harbour,  can not be less than 1 character long</message>
+</record>
+<record>
+  <date>2023-10-16T18:28:37.894237Z</date>
+  <millis>1697480917894</millis>
+  <nanos>237000</nanos>
+  <sequence>2</sequence>
+  <logger>be.kdg.model.Sailboat</logger>
+  <level>SEVERE</level>
+  <class>model.Sailboat</class>
+  <method>setDepth</method>
+  <thread>1</thread>
+  <message>Depth, -2.000000 can not be less than 0</message>
+</record>
+<record>
+  <date>2023-10-16T18:28:37.895233300Z</date>
+  <millis>1697480917895</millis>
+  <nanos>233300</nanos>
+  <sequence>3</sequence>
+  <logger>be.kdg.model.Sailboat</logger>
+  <level>SEVERE</level>
+  <class>model.Sailboat</class>
+  <method>setLength</method>
+  <thread>1</thread>
+  <message>Length, -2 can not be less than 0</message>
+</record>
+<record>
+  <date>2023-10-16T18:28:37.896230900Z</date>
+  <millis>1697480917896</millis>
+  <nanos>230900</nanos>
+  <sequence>4</sequence>
+  <logger>be.kdg.model.Sailboat</logger>
+  <level>SEVERE</level>
+  <class>model.Sailboat</class>
+  <method>setBuildYear</method>
+  <thread>1</thread>
+  <message>Build year, 2024-01-01 can not be in the future</message>
+</record>
+<record>
+  <date>2023-10-16T18:28:37.898231Z</date>
+  <millis>1697480917898</millis>
+  <nanos>231000</nanos>
+  <sequence>5</sequence>
+  <logger>be.kdg.model.Sailboats</logger>
+  <level>FINER</level>
+  <class>model.Sailboats</class>
+  <method>add</method>
+  <thread>1</thread>
+  <message>Sailboat
+Name: Teraju                         Harbour: Argentina
+Depth: -1.00m                        Length: 75ft
+Classification: Y                    Build year: 1995-01-01
+
+Added to the list</message>
+</record>
+</log>
