@@ -80,9 +80,6 @@ public class SailboatDbDao implements SailboatDao {
         try {
             PreparedStatement prep = connection.prepareStatement(query);
 
-            if (naam.equals("*")) {
-                return statement.executeUpdate("DELETE FROM sailboattable") > 0;
-            }
             prep.setString(1, naam);
 
 
