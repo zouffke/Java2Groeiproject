@@ -91,7 +91,7 @@ public class Demo_4 {
 
         System.out.println("\nMap met alle boten per classificatie:");
         myList.keySet()
-                .forEach(c -> System.out.printf("%s: %s\n", c, myList.get(c).stream()
+                .forEach(k -> System.out.printf("%s: %s\n", k, myList.get(k).stream()
                         .map(Sailboat::getName)
                         .collect(Collectors.joining(", "))));
     }
