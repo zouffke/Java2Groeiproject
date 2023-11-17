@@ -25,8 +25,8 @@ public class SailboatStaxParser {
         //Start the document
         xmlStreamWriter.writeStartDocument();
         //Write the opening tag of the XML
-        xmlStreamWriter.writeStartElement("Sailboats");                                                   //<Sailboats>
-        for (Sailboat sailboat : sailboats.sortedOnBuildYear()) {
+        xmlStreamWriter.writeStartElement("sailboats");                                                   //<Sailboats>
+        for (Sailboat sailboat : sailboats.getSailboats()) {
             writeElement(sailboat);
         }
         //Write ending tag of XML
@@ -38,15 +38,15 @@ public class SailboatStaxParser {
 
     private void writeElement(Sailboat sailboat) throws XMLStreamException {
         //Write opening tag
-        xmlStreamWriter.writeStartElement("Sailboat"); //<Sailboat>
+        xmlStreamWriter.writeStartElement("sailboat"); //<Sailboat>
         //add data to opening tag
-        xmlStreamWriter.writeAttribute("Name", sailboat.getName());                                         //<Sailboat Name="x">
+        xmlStreamWriter.writeAttribute("name", sailboat.getName());                                         //<Sailboat Name="x">
 
-        writeSimpleElement(xmlStreamWriter, "Harbour", sailboat.getHarbour());                                    //<Harbour>...</Harbour>
-        writeSimpleElement(xmlStreamWriter, "Depth", String.valueOf(sailboat.getDepth()));                        //<Depth>...</Depth>
-        writeSimpleElement(xmlStreamWriter, "Length", String.valueOf(sailboat.getLength()));                      //<Length>...</Length>
-        writeSimpleElement(xmlStreamWriter, "Classification", sailboat.getClassification().toString());           //<Classification>...</Classification>
-        writeSimpleElement(xmlStreamWriter, "Buildyear", sailboat.getBuildYear().toString());                     //<Buildyear>...</Buildyear>
+        writeSimpleElement(xmlStreamWriter, "harbour", sailboat.getHarbour());                                    //<Harbour>...</Harbour>
+        writeSimpleElement(xmlStreamWriter, "depth", String.valueOf(sailboat.getDepth()));                        //<Depth>...</Depth>
+        writeSimpleElement(xmlStreamWriter, "length", String.valueOf(sailboat.getLength()));                      //<Length>...</Length>
+        writeSimpleElement(xmlStreamWriter, "classification", sailboat.getClassification().toString());           //<Classification>...</Classification>
+        writeSimpleElement(xmlStreamWriter, "build-year", sailboat.getBuildYear().toString());                     //<Buildyear>...</Buildyear>
 
         xmlStreamWriter.writeEndElement();                                                                            //</Sailboat>
     }

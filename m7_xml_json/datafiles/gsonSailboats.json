@@ -1,0 +1,124 @@
+{
+  "sailboats": [
+    {
+      "name": "Teraju",
+      "harbour": "Argentina",
+      "depth": -1.0,
+      "length": 75,
+      "classification": "Y",
+      "buildYear": "1995-01-01"
+    },
+    {
+      "name": "Valtair",
+      "harbour": "Melbourne",
+      "depth": 2.3,
+      "length": 65,
+      "classification": "CRUISER",
+      "buildYear": "1996-01-01"
+    },
+    {
+      "name": "Sanada",
+      "harbour": "Unknown",
+      "depth": 3.0,
+      "length": 57,
+      "classification": "CRUISER",
+      "buildYear": "2008-01-01"
+    },
+    {
+      "name": "Obsession",
+      "harbour": "Unknown",
+      "depth": 3.2,
+      "length": 50,
+      "classification": "CRUISER",
+      "buildYear": "2004-01-01"
+    },
+    {
+      "name": "goodspeed",
+      "harbour": "Unknown",
+      "depth": 2.0,
+      "length": 40,
+      "classification": "CRUISE_RACER",
+      "buildYear": "2004-01-01"
+    },
+    {
+      "name": "Enya",
+      "harbour": "Unknown",
+      "depth": 1.7,
+      "length": 33,
+      "classification": "CRUISER",
+      "buildYear": "1980-01-01"
+    },
+    {
+      "name": "La pologne 2",
+      "harbour": "Ilawa",
+      "depth": 1.75,
+      "length": 27,
+      "classification": "SLOOP",
+      "buildYear": "2020-01-01"
+    },
+    {
+      "name": "Alba",
+      "harbour": "Unknown",
+      "depth": 1.9,
+      "length": 36,
+      "classification": "CRUISER",
+      "buildYear": "1976-01-01"
+    },
+    {
+      "name": "BlackPearl",
+      "harbour": "Houston",
+      "depth": 5.0,
+      "length": 80,
+      "classification": "CRUISER",
+      "buildYear": "2023-01-01"
+    },
+    {
+      "name": "The big easy",
+      "harbour": "Stavoren",
+      "depth": 1.55,
+      "length": 30,
+      "classification": "CRUISER",
+      "buildYear": "2000-01-01"
+    },
+    {
+      "name": "Gladys",
+      "harbour": "Leeuwarden",
+      "depth": 1.5,
+      "length": 34,
+      "classification": "CRUISER",
+      "buildYear": "1978-01-01"
+    },
+    {
+      "name": "Ricercare",
+      "harbour": "Corfu",
+      "depth": 1.8,
+      "length": 49,
+      "classification": "CRUISER",
+      "buildYear": "1990-01-01"
+    },
+    {
+      "name": "River blues",
+      "harbour": "Unknown",
+      "depth": 1.6,
+      "length": 37,
+      "classification": "CRUISE_RACER",
+      "buildYear": "2006-01-01"
+    },
+    {
+      "name": "Santana",
+      "harbour": "Unknown",
+      "depth": 2.0,
+      "length": 75,
+      "classification": "CRUISER",
+      "buildYear": "1988-01-01"
+    },
+    {
+      "name": "Optimist",
+      "harbour": "Antwerp",
+      "depth": 0.5,
+      "length": 5,
+      "classification": "RACEBOAT",
+      "buildYear": "1947-01-01"
+    }
+  ]
+}

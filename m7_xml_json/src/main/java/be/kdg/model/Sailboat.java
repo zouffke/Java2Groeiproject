@@ -1,6 +1,11 @@
 package be.kdg.model;
 
-import java.io.Serial;
+import be.kdg.parsing.LocalDateAdapter;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -12,30 +17,18 @@ import java.util.Objects;
  * @version 1.0
  * @see <a href="https://en.wikipedia.org/wiki/Sailboat">Sailboat</a>
  */
+@XmlType(propOrder = {"name", "harbour", "depth", "length", "classification", "buildYear"})
 public class Sailboat implements Comparable<Sailboat>, Serializable {
     //region vars
-    private int id;
     private String name;
     private String harbour;
-    private transient double depth; //m
-    private transient int length; //ft
-    private transient Classification classification;
+    private double depth; //m
+    private int length; //ft
+    private Classification classification;
     private LocalDate buildYear;
-    @Serial
-    private static final long serialVersionUID = 1L;
     //endregion
 
     //region Constructors
-
-    public Sailboat(int id, String name, String harbour, double depth, int length, Classification classification, LocalDate buildYear) {
-        setName(name);
-        setHarbour(harbour);
-        setDepth(depth);
-        setLength(length);
-        setClassification(classification);
-        setBuildYear(buildYear);
-        setId(id);
-    }
 
     /**
      * Constructor for Sailboat
@@ -49,7 +42,12 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
      * @see Classification
      */
     public Sailboat(String name, String harbour, double depth, int length, Classification classification, LocalDate buildYear) {
-        this(-1, name, harbour, depth, length, classification, buildYear);
+        setName(name);
+        setHarbour(harbour);
+        setDepth(depth);
+        setLength(length);
+        setClassification(classification);
+        setBuildYear(buildYear);
     }
 
     /**
@@ -98,6 +96,7 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
      * @param name Name of the boat
      * @throws IllegalArgumentException if name is less than 1 character long
      */
+    @XmlAttribute(name = "name")
     public void setName(String name) {
         if (!name.isBlank()) {
             this.name = name;
@@ -164,6 +163,8 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
      * @param buildYear Build year of the boat
      * @throws IllegalArgumentException if build year is in the future
      */
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlElement(name = "build-year")
     public void setBuildYear(LocalDate buildYear) {
         if (LocalDate.now().isAfter(buildYear) || LocalDate.now().equals(buildYear)) {
             this.buildYear = buildYear;
@@ -229,10 +230,6 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
     }
     //endregion
 
-    public void setId(int id){
-        this.id = id;
-    }
-
     //region Getters
 
     /**
@@ -289,6 +286,5 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
         return buildYear;
     }
 
-    public int getId(){return this.id;}
     //endregion
 }

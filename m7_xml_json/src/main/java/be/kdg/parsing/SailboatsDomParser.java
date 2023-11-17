@@ -36,7 +36,7 @@ public class SailboatsDomParser {
                         String data;
                         switch (tagName.toLowerCase()) {
                             case "sailboat":
-                                sailboat.setName(startElement.getAttributeByName(new QName("Name")).getValue());
+                                sailboat.setName(startElement.getAttributeByName(new QName("name")).getValue());
                                 break;
                             case "harbour":
                                 data = getCharContent(eventReader);
@@ -54,7 +54,7 @@ public class SailboatsDomParser {
                                 data = getCharContent(eventReader);
                                 if (data != null) sailboat.setClassification(Classification.valueOf(data));
                                 break;
-                            case "buildyear":
+                            case "build-year":
                                 data = getCharContent(eventReader);
                                 if (data != null) sailboat.setBuildYear(LocalDate.parse(data));
                                 break;

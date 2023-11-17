@@ -1,13 +1,17 @@
 package be.kdg.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.time.LocalDate;
 import java.util.*;
 
+@XmlRootElement(name = "sailboats")
 public class Sailboats {
-    private TreeSet<Sailboat> sailboats;
+    private ArrayList<Sailboat> sailboats;
 
     public Sailboats() {
-        this.sailboats = new TreeSet<>();
+        this.sailboats = new ArrayList<>();
     }
 
     public boolean add(Sailboat sailboat) {
@@ -56,6 +60,16 @@ public class Sailboats {
         }));
         return sorted;
     }
+
+    public ArrayList<Sailboat> getSailboats() {
+        return sailboats;
+    }
+
+    @XmlElement(name = "sailboat")
+    public void setSailboats(ArrayList<Sailboat> sailboats) {
+        this.sailboats = sailboats;
+    }
+
 
     public int getSize(){
         return sailboats.size();

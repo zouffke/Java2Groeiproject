@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sailboats>
+    <sailboat name="Teraju">
+        <harbour>Argentina</harbour>
+        <depth>-1.0</depth>
+        <length>75</length>
+        <classification>Y</classification>
+        <build-year>1995-01-01</build-year>
+    </sailboat>
+    <sailboat name="Valtair">
+        <harbour>Melbourne</harbour>
+        <depth>2.3</depth>
+        <length>65</length>
+        <classification>CRUISER</classification>
+        <build-year>1996-01-01</build-year>
+    </sailboat>
+    <sailboat name="Sanada">
+        <harbour>Unknown</harbour>
+        <depth>3.0</depth>
+        <length>57</length>
+        <classification>CRUISER</classification>
+        <build-year>2008-01-01</build-year>
+    </sailboat>
+    <sailboat name="Obsession">
+        <harbour>Unknown</harbour>
+        <depth>3.2</depth>
+        <length>50</length>
+        <classification>CRUISER</classification>
+        <build-year>2004-01-01</build-year>
+    </sailboat>
+    <sailboat name="goodspeed">
+        <harbour>Unknown</harbour>
+        <depth>2.0</depth>
+        <length>40</length>
+        <classification>CRUISE_RACER</classification>
+        <build-year>2004-01-01</build-year>
+    </sailboat>
+    <sailboat name="Enya">
+        <harbour>Unknown</harbour>
+        <depth>1.7</depth>
+        <length>33</length>
+        <classification>CRUISER</classification>
+        <build-year>1980-01-01</build-year>
+    </sailboat>
+    <sailboat name="La pologne 2">
+        <harbour>Ilawa</harbour>
+        <depth>1.75</depth>
+        <length>27</length>
+        <classification>SLOOP</classification>
+        <build-year>2020-01-01</build-year>
+    </sailboat>
+    <sailboat name="Alba">
+        <harbour>Unknown</harbour>
+        <depth>1.9</depth>
+        <length>36</length>
+        <classification>CRUISER</classification>
+        <build-year>1976-01-01</build-year>
+    </sailboat>
+    <sailboat name="BlackPearl">
+        <harbour>Houston</harbour>
+        <depth>5.0</depth>
+        <length>80</length>
+        <classification>CRUISER</classification>
+        <build-year>2023-01-01</build-year>
+    </sailboat>
+    <sailboat name="The big easy">
+        <harbour>Stavoren</harbour>
+        <depth>1.55</depth>
+        <length>30</length>
+        <classification>CRUISER</classification>
+        <build-year>2000-01-01</build-year>
+    </sailboat>
+    <sailboat name="Gladys">
+        <harbour>Leeuwarden</harbour>
+        <depth>1.5</depth>
+        <length>34</length>
+        <classification>CRUISER</classification>
+        <build-year>1978-01-01</build-year>
+    </sailboat>
+    <sailboat name="Ricercare">
+        <harbour>Corfu</harbour>
+        <depth>1.8</depth>
+        <length>49</length>
+        <classification>CRUISER</classification>
+        <build-year>1990-01-01</build-year>
+    </sailboat>
+    <sailboat name="River blues">
+        <harbour>Unknown</harbour>
+        <depth>1.6</depth>
+        <length>37</length>
+        <classification>CRUISE_RACER</classification>
+        <build-year>2006-01-01</build-year>
+    </sailboat>
+    <sailboat name="Santana">
+        <harbour>Unknown</harbour>
+        <depth>2.0</depth>
+        <length>75</length>
+        <classification>CRUISER</classification>
+        <build-year>1988-01-01</build-year>
+    </sailboat>
+    <sailboat name="Optimist">
+        <harbour>Antwerp</harbour>
+        <depth>0.5</depth>
+        <length>5</length>
+        <classification>RACEBOAT</classification>
+        <build-year>1947-01-01</build-year>
+    </sailboat>
+</sailboats>
