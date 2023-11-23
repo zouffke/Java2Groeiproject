@@ -31,7 +31,9 @@ public class SailboatDbDaoTest {
 
     @Test
     void testInsert() {
-        assertEquals(Data.getData().size(), db.sortedOnName().size());
+        int s1 = Data.getData().size();
+        int s2 = db.sortedOnName().size();
+        assertEquals(s1, s2);
     }
 
     @Test

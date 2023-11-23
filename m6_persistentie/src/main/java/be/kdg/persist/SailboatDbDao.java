@@ -80,6 +80,9 @@ public class SailboatDbDao implements SailboatDao {
         try {
             PreparedStatement prep = connection.prepareStatement(query);
 
+            if (naam.equals("*")) {
+                return statement.executeUpdate("DELETE FROM sailboattable") > 0;
+            }
             prep.setString(1, naam);
 
 
@@ -125,7 +128,7 @@ public class SailboatDbDao implements SailboatDao {
     @Override
     public Sailboat retrieve(String naam) {
         try {
-            resultSet = statement.executeQuery("SELECT * FROM sailboattable WHERE name = '" + naam +"'");
+            resultSet = statement.executeQuery("SELECT * FROM sailboattable WHERE name = '" + naam + "'");
             if (resultSet.next()) {
                 return new Sailboat(
                         resultSet.getInt("id"),
