@@ -1,6 +1,7 @@
 package be.kdg;
 
 import be.kdg.kollections.ArrayList;
+import be.kdg.kollections.Kollections;
 import be.kdg.kollections.LinkedList;
 import be.kdg.kollections.List;
 import be.kdg.model.Sailboat;
@@ -54,10 +55,26 @@ public class PerformanceTester {
     }
 
     public static void testSelectionSort() {
-        //TODO: test selectionsort for (int n = 1000; n < 20000; n += 1000)
+        System.out.println("Selection sort:");
+        for (int n = 1000; n < 20000; n += 1000){
+            List<Sailboat> sailboats = new ArrayList<>();
+            for (int i = 0; i < n; i++){
+                sailboats.add(SailboatFactory.newRandomSailboat());
+            }
+            Kollections.selectionSort(sailboats);
+            System.out.printf("%d;%d\n", n, Sailboat.compareCounter);
+        }
     }
 
     public static void testMergeSort() {
-        //TODO: test mergesort for (int n = 1000; n < 200000; n += 1000)
+        System.out.println("Merge sort:");
+        for (int n = 1000; n < 20000; n += 1000){
+            List<Sailboat> sailboats = new ArrayList<>();
+            for (int i = 0; i < n; i++){
+                sailboats.add(SailboatFactory.newRandomSailboat());
+            }
+            Kollections.mergeSort(sailboats);
+            System.out.printf("%d;%d\n", n, Sailboat.compareCounter);
+        }
     }
 }

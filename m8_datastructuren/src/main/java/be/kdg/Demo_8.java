@@ -1,12 +1,14 @@
 package be.kdg;
 
 import be.kdg.kollections.ArrayList;
+import be.kdg.kollections.Kollections;
 import be.kdg.kollections.List;
 import be.kdg.model.Classification;
 import be.kdg.model.Sailboat;
 import be.kdg.model.SailboatFactory;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 public class Demo_8 {
     public static void main(String[] args) {
@@ -18,12 +20,63 @@ public class Demo_8 {
 
         List<Sailboat> sbl = PerformanceTester.randomList(10);
 
-        for (int i = 0; i < sbl.size(); i++){
+        for (int i = 0; i < sbl.size(); i++) {
             System.out.println(sbl.get(i));
         }
 
         System.out.println("\n\n PART 3 \n\n");
 
         PerformanceTester.compareArrayListAndLinkedList(20000);
+
+        System.out.println("\n\n PART 4 \n\n");
+
+        List<Sailboat> test = new ArrayList<>();
+
+        System.out.println("Selection sort:");
+        System.out.println("Before:\n============================");
+        for (int i = 0; i < 30; i++){
+            test.add(SailboatFactory.newRandomSailboat());
+            System.out.println(test.get(i));
+        }
+
+        Kollections.selectionSort(test);
+
+        System.out.println("After:\n============================");
+        for (int i = 0; i < test.size(); i++){
+            System.out.println(test.get(i));
+        }
+
+        System.out.println("Merge sort:");
+        System.out.println("Before:\n============================");
+        for (int i = 0; i < 30; i++){
+            test.add(SailboatFactory.newRandomSailboat());
+            System.out.println(test.get(i));
+        }
+
+        Kollections.mergeSort(test);
+
+        System.out.println("After:\n============================");
+        for (int i = 0; i < test.size(); i++){
+            System.out.println(test.get(i));
+        }
+
+        //PerformanceTester.testSelectionSort();
+        //PerformanceTester.testMergeSort();
+
+        System.out.println("quick sort:");
+        for (int i = 0; i < 30; i++){
+            test.add(SailboatFactory.newRandomSailboat());
+            System.out.println(test.get(i));
+        }
+
+        Kollections.quickSort(test);
+        for (int i = 0; i < test.size(); i++){
+            System.out.println(test.get(i));
+        }
+
+        System.out.println(Kollections.binarySearch(test, test.get(4)));
+        System.out.println(Kollections.lineairSearch(test, test.get(4)));
+        System.out.println(Kollections.binarySearch(test, SailboatFactory.newRandomSailboat()));
+        System.out.println(Kollections.lineairSearch(test, SailboatFactory.newRandomSailboat()));
     }
 }

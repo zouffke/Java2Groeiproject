@@ -2,10 +2,21 @@ package be.kdg.kollections;
 
 public class Kollections {
 
-    private Kollections(){}
+    private Kollections() {
+    }
 
     public static <T extends Comparable<T>> void selectionSort(List<T> list) {
-        //TODO: use the selectionSort from the introduction module and make it generic!
+        for (int i = 0; i < list.size() - 1; i++) {
+            int indexSmallest = i;
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(j).compareTo(list.get(indexSmallest)) < 0) {
+                    indexSmallest = j;
+                }
+            }
+            T tmp = list.get(i);
+            list.set(i, list.get(indexSmallest));
+            list.set(indexSmallest, tmp);
+        }
     }
 
     public static <T extends Comparable<T>> void mergeSort(List<T> list) {
@@ -18,7 +29,11 @@ public class Kollections {
         //splits in 2 delen, sorteer elk deel en merge dan
         if (from > to) throw new IllegalArgumentException("from should be before to");
         if (to - from == 0) return;//trivial case
-        //TODO: complete the algorithm! Use recursive calls and the merge method...
+
+        int middle = from + (to - from) / 2;
+        mergeSort(list, from, middle);
+        mergeSort(list, middle + 1, to);
+        merge(list, from, to);
     }
 
     //from and to inclusive
@@ -88,7 +103,19 @@ public class Kollections {
     }
 
     private static <T extends Comparable<T>> int binarySearch(List<T> sortedList, T element, int from, int to) {
-        //TODO: implement this method!
-        return -1;
+        if (from > to) {
+            return -1; // element is not found
+        }
+
+        int middle = from + (to - from) / 2;
+        int comparison = sortedList.get(middle).compareTo(element);
+
+        if (comparison == 0) {
+            return middle; // element is found
+        } else if (comparison > 0) {
+            return binarySearch(sortedList, element, from, middle - 1); // search in the left half
+        } else {
+            return binarySearch(sortedList, element, middle + 1, to); // search in the right half
+        }
     }
 }

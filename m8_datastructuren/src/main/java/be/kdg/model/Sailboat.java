@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public class Sailboat implements Comparable<Sailboat>, Serializable {
     //region vars
+    public static long compareCounter = 0;
     private String name;
     private String harbour;
     private double depth; //m
@@ -200,6 +201,7 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
      */
     @Override
     public int compareTo(Sailboat o) {
+        compareCounter++;
         return this.name.compareTo(o.name)
                 + this.classification.compareTo(o.classification)
                 + this.buildYear.compareTo(o.buildYear);

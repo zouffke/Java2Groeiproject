@@ -42,7 +42,7 @@ public class SailboatFactory {
         char[] consonants = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
 
         StringBuilder sb = new StringBuilder();
-        int wordLength = r.nextInt(maxWordLength) + 1;
+        int wordLength = r.nextInt(maxWordLength) + 2;
         for (int j = 0; j < wordLength; j++) {
             char c;
             if (r.nextInt(3) == 0) { // 1/3 chance for a vowel
