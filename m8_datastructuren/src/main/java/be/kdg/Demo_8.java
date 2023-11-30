@@ -75,6 +75,8 @@ public class Demo_8 {
 
         try {
             PerformanceTester.compareListMapToHashMap(1000);
+            System.out.println();
+            PerformanceTester.compareArraySetToTreeSet(1000);
         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException |
                  IllegalAccessException e) {
             System.out.println(e);

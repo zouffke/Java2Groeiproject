@@ -7,6 +7,8 @@ import be.kdg.kollections.lists.List;
 import be.kdg.kollections.maps.HashMap;
 import be.kdg.kollections.maps.ListMap;
 import be.kdg.kollections.maps.Map;
+import be.kdg.kollections.sets.ArraySet;
+import be.kdg.kollections.sets.TreeSet;
 import be.kdg.model.Classification;
 import be.kdg.model.Sailboat;
 import be.kdg.model.SailboatFactory;
@@ -129,5 +131,34 @@ public class PerformanceTester {
         }
         endTime = System.nanoTime();
         System.out.printf("Hashmap: n = %d, equalsCount = %10d, nanosec = %10d\n", size, Sailboat.equalsCounter, endTime - startTime);
+    }
+
+    public static void compareArraySetToTreeSet(int size) {
+        ArraySet<Sailboat> arraySet = new ArraySet<>();
+        TreeSet<Sailboat> treeSet = new TreeSet<>();
+
+        long startTime = System.nanoTime();
+        Sailboat.equalsCounter = 0;
+        Sailboat.compareCounter = 0;
+        for (int i = 0; i < size; i++) {
+            arraySet.add(SailboatFactory.newRandomSailboat());
+        }
+        long endTime = System.nanoTime();
+
+        System.out.printf("ArraySet, n = %d: equalscount: %d\n", size, Sailboat.equalsCounter);
+        System.out.printf("ArraySet, n = %d: comparecount: %d\n", size, Sailboat.compareCounter);
+        System.out.printf("ArraySet, n = %d: nanosec: %d\n", size, endTime - startTime);
+
+        startTime = System.nanoTime();
+        Sailboat.equalsCounter = 0;
+        Sailboat.compareCounter = 0;
+        for (int i = 0; i < size; i++) {
+            treeSet.add(SailboatFactory.newRandomSailboat());
+        }
+        endTime = System.nanoTime();
+
+        System.out.printf("TreeSet,  n = %d: equalscount: %d\n", size, Sailboat.equalsCounter);
+        System.out.printf("TreeSet,  n = %d: comparecount: %d\n", size, Sailboat.compareCounter);
+        System.out.printf("TreeSet,  n = %d: nanosec: %d\n", size, endTime - startTime);
     }
 }
