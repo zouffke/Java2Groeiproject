@@ -20,6 +20,7 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
     private int length; //ft
     private Classification classification;
     private LocalDate buildYear;
+    public static long equalsCounter = 0;
     //endregion
 
     //region Constructors
@@ -180,7 +181,8 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sailboat sailboat = (Sailboat) o;
-        return Objects.equals(name, sailboat.name) && classification == sailboat.classification && Objects.equals(buildYear, sailboat.buildYear);
+        equalsCounter++;
+        return Objects.equals(name, sailboat.name);
     }
 
     /**
@@ -190,7 +192,7 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(name, classification, buildYear);
+        return Objects.hash(name);
     }
 
     /**
@@ -202,9 +204,7 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
     @Override
     public int compareTo(Sailboat o) {
         compareCounter++;
-        return this.name.compareTo(o.name)
-                + this.classification.compareTo(o.classification)
-                + this.buildYear.compareTo(o.buildYear);
+        return this.name.compareTo(o.name);
     }
 
     /**

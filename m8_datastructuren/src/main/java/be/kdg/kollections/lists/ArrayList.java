@@ -1,15 +1,27 @@
-package be.kdg.kollections;
+package be.kdg.kollections.lists;
+
+import be.kdg.kollections.Kollections;
 
 public class ArrayList<E> implements List<E> {
+    //region vars
     private static final int INITIAL_CAPACITY = 10;
     private Object[] elements;
     private int size;
+    //endregion
 
-    public ArrayList() {
-        elements = new Object[INITIAL_CAPACITY];
+    //region constructors
+
+    public ArrayList(int size) {
+        elements = new Object[size];
         size = 0;
     }
 
+    public ArrayList() {
+        this(INITIAL_CAPACITY);
+    }
+    //endregion
+
+    //region ownFunctions
     private void expand() {
         Object[] temp = new Object[this.size + INITIAL_CAPACITY];
 
@@ -17,7 +29,11 @@ public class ArrayList<E> implements List<E> {
 
         this.elements = temp;
     }
+    //endregion
 
+    //region Overrides
+    //region List Interface
+    //region add
     @Override
     public void add(int index, E element) {
         if (index > this.size || index < 0) {
@@ -49,6 +65,7 @@ public class ArrayList<E> implements List<E> {
     public void add(E element) {
         add(size, element);
     }
+    //endregion
 
     @Override
     public void set(int index, E element) {
@@ -60,7 +77,7 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public int size() {
-        return size;
+        return this.size;
     }
 
     @Override
@@ -86,4 +103,26 @@ public class ArrayList<E> implements List<E> {
 
         return (E) this.elements[index];
     }
+
+    @Override
+    public int indexOf(E element) {
+        return Kollections.lineairSearch(this, element);
+    }
+    //endregion
+    //region Collection Interface
+
+    @Override
+    public boolean remove(E element) {
+        int index = this.indexOf(element);
+        if (index == -1) return false;
+        return this.remove(index).equals(element);
+    }
+
+    @Override
+    public boolean contains(E element) {
+        return this.indexOf(element) != -1;
+    }
+
+    //endregion
+    //endregion
 }

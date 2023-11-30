@@ -1,22 +1,19 @@
 package be.kdg.model;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
 public class Sailboats implements Serializable {
-    private TreeSet<Sailboat> sailboats;
+    private ArrayList<Sailboat> sailboats;
 
     public Sailboats() {
-        this.sailboats = new TreeSet<>();
+        this.sailboats = new ArrayList<>();
     }
 
     public boolean add(Sailboat sailboat) {
         return sailboats.add(sailboat);
     }
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     public boolean remove(String name, Classification classification, LocalDate buildYear) {
         for (Iterator<Sailboat> it = sailboats.iterator(); it.hasNext(); ) {
