@@ -2,12 +2,13 @@ package be.kdg.model;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class Sailboats {
-    private TreeSet<Sailboat> sailboats;
+    private final ArrayBlockingQueue<Sailboat> sailboats;
 
-    public Sailboats() {
-        this.sailboats = new TreeSet<>();
+    public Sailboats(int sizeCap) {
+        this.sailboats = new ArrayBlockingQueue<>(sizeCap);
     }
 
     public boolean add(Sailboat sailboat) {

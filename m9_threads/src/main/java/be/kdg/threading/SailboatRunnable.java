@@ -12,8 +12,14 @@ public class SailboatRunnable implements Runnable {
 
     private List<Sailboat> sailboats;
     private final Predicate<Sailboat> predicate;
+    private final int itemAmt;
 
     public SailboatRunnable(Predicate<Sailboat> predicate) {
+        this(predicate, 1000);
+    }
+
+    public SailboatRunnable(Predicate<Sailboat> predicate, int itemAmt){
+        this.itemAmt = itemAmt;
         this.predicate = predicate;
     }
 
