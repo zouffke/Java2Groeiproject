@@ -1,4 +1,8 @@
 package be.kdg.sailboatproject.view;
 
-public class SailboatsView {
+import javafx.scene.layout.BorderPane;
+
+import javax.swing.text.TableView;
+
+public class SailboatsView extends BorderPane {
 }

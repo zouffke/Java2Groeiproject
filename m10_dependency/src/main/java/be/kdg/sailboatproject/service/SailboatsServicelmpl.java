@@ -1,4 +1,33 @@
 package be.kdg.sailboatproject.service;
 
-public class SailboatsServicelmpl {
+import be.kdg.sailboatproject.database.SailboatDao;
+import be.kdg.sailboatproject.model.Sailboat;
+
+import java.util.List;
+
+public class SailboatsServicelmpl implements SailboatsService {
+
+    //region vars
+
+    private final SailboatDao db;
+
+    //endregion
+
+    //region constructors
+
+    public SailboatsServicelmpl(SailboatDao db){
+        this.db = db;
+    }
+
+    //endregion
+
+    @Override
+    public List<Sailboat> getAllSailboats() {
+        return this.db.getAllSailboats();
+    }
+
+    @Override
+    public boolean addSailboat(Sailboat sailboat) {
+        return this.db.insert(sailboat);
+    }
 }

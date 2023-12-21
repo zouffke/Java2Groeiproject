@@ -1,5 +1,7 @@
 package be.kdg.sailboatproject.model;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,17 +12,30 @@ import java.util.Objects;
  * @version 1.0
  * @see <a href="https://en.wikipedia.org/wiki/Sailboat">Sailboat</a>
  */
-public class Sailboat implements Comparable<Sailboat> {
+public class Sailboat implements Comparable<Sailboat>, Serializable {
     //region vars
+    private int id;
     private String name;
     private String harbour;
-    private double depth; //m
-    private int length; //ft
-    private Classification classification;
+    private transient double depth; //m
+    private transient int length; //ft
+    private transient Classification classification;
     private LocalDate buildYear;
+    @Serial
+    private static final long serialVersionUID = 1L;
     //endregion
 
     //region Constructors
+
+    public Sailboat(int id, String name, String harbour, double depth, int length, Classification classification, LocalDate buildYear) {
+        setName(name);
+        setHarbour(harbour);
+        setDepth(depth);
+        setLength(length);
+        setClassification(classification);
+        setBuildYear(buildYear);
+        setId(id);
+    }
 
     /**
      * Constructor for Sailboat
@@ -34,12 +49,7 @@ public class Sailboat implements Comparable<Sailboat> {
      * @see Classification
      */
     public Sailboat(String name, String harbour, double depth, int length, Classification classification, LocalDate buildYear) {
-        setName(name);
-        setHarbour(harbour);
-        setDepth(depth);
-        setLength(length);
-        setClassification(classification);
-        setBuildYear(buildYear);
+        this(-1, name, harbour, depth, length, classification, buildYear);
     }
 
     /**
@@ -219,6 +229,10 @@ public class Sailboat implements Comparable<Sailboat> {
     }
     //endregion
 
+    public void setId(int id){
+        this.id = id;
+    }
+
     //region Getters
 
     /**
@@ -274,5 +288,7 @@ public class Sailboat implements Comparable<Sailboat> {
     public LocalDate getBuildYear() {
         return buildYear;
     }
+
+    public int getId(){return this.id;}
     //endregion
 }
