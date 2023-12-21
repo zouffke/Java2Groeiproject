@@ -26,14 +26,14 @@ public class SailboatDbDao implements SailboatDao {
 
     //region constructors
 
-    public static SailboatDbDao getInstance()  {
+    public static SailboatDbDao getInstance() {
         if (instance == null) {
             instance = new SailboatDbDao("jdbc:hsqldb:file:database/sailboatdb");
         }
         return instance;
     }
 
-    private SailboatDbDao(String path)  {
+    private SailboatDbDao(String path) {
         try {
             connection = DriverManager.getConnection(path, "sa", "");
         } catch (SQLException e) {
@@ -55,7 +55,7 @@ public class SailboatDbDao implements SailboatDao {
 
     //region DB functions
 
-    private void clearDbVars()  {
+    private void clearDbVars() {
         try {
             statement.close();
             preparedStatement.close();
@@ -63,6 +63,8 @@ public class SailboatDbDao implements SailboatDao {
         } catch (SQLException e) {
             L.warning(String.format("There was a problem closing one of the db vars: %s", e.getMessage()));
             throw new SailboatException(e);
+        } catch (NullPointerException e) {
+            L.info(String.format("Nullpointer exception for: %s", e.getMessage()));
         }
 
         resultSet = null;
@@ -79,12 +81,12 @@ public class SailboatDbDao implements SailboatDao {
 
     }
 
-    private void createTable() throws SQLException{
+    private void createTable() throws SQLException {
         clearDbVars();
         L.info("Creating table...");
         L.info("Checking if table is already there...");
         DatabaseMetaData dbm = connection.getMetaData();
-        resultSet = dbm.getTables(null, null, "sailboattable", null);
+        resultSet = dbm.getTables(null, null, "SAILBOATTABLE", null);
         if (!resultSet.next()) {
             L.info("Table 'sailboattable' does not exist yet. Creating now...");
             statement = connection.createStatement();
@@ -108,7 +110,7 @@ public class SailboatDbDao implements SailboatDao {
     //endregion
 
     @Override
-    public boolean insert(Sailboat sailboat)  {
+    public boolean insert(Sailboat sailboat) {
         clearDbVars();
         String query = "INSERT INTO sailboattable VALUES (NULL, ?, ?, ?, ?, ?, ?)";
         try {
@@ -153,7 +155,7 @@ public class SailboatDbDao implements SailboatDao {
     }
 
     @Override
-    public boolean update(Sailboat sailboat)  {
+    public boolean update(Sailboat sailboat) {
         String query = "UPDATE sailboattable SET " +
                 "name=?," +
                 "harbour=?," +
@@ -185,8 +187,9 @@ public class SailboatDbDao implements SailboatDao {
     }
 
     @Override
-    public Sailboat retrieve(String naam)  {
+    public Sailboat retrieve(String naam) {
         try {
+            statement = connection.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM sailboattable WHERE name = '" + naam + "'");
             if (resultSet.next()) {
                 return new Sailboat(
@@ -207,9 +210,10 @@ public class SailboatDbDao implements SailboatDao {
     //region execute
 
     @Override
-    public List<Sailboat> execute(String query)  {
+    public List<Sailboat> execute(String query) {
         try {
             List<Sailboat> sailboats = new ArrayList<>();
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("name"));
@@ -230,31 +234,31 @@ public class SailboatDbDao implements SailboatDao {
     }
 
     @Override
-    public List<Sailboat> getAllSailboats()  {
+    public List<Sailboat> getAllSailboats() {
         return execute("SELECT * FROM sailboattable");
     }
 
-    public List<Sailboat> sortedOnName()  {
+    public List<Sailboat> sortedOnName() {
         return execute("SELECT * FROM sailboattable ORDER BY name");
     }
 
-    public List<Sailboat> sortedOnHarbour()  {
+    public List<Sailboat> sortedOnHarbour() {
         return execute("SELECT * FROM sailboattable ORDER BY harbour");
     }
 
-    public List<Sailboat> sortedOnDepth()  {
+    public List<Sailboat> sortedOnDepth() {
         return execute("SELECT * FROM sailboattable ORDER BY depth");
     }
 
-    public List<Sailboat> sortedOnLength()  {
+    public List<Sailboat> sortedOnLength() {
         return execute("SELECT * FROM sailboattable ORDER BY length");
     }
 
-    public List<Sailboat> sortedOnClassification()  {
+    public List<Sailboat> sortedOnClassification() {
         return execute("SELECT * FROM sailboattable ORDER BY classification");
     }
 
-    public List<Sailboat> sortedOnBuildYear()  {
+    public List<Sailboat> sortedOnBuildYear() {
         return execute("SELECT * FROM sailboattable ORDER BY buildyear");
     }
 

@@ -88,6 +88,10 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
     public Sailboat() {
         this("Unknown", "Unknown", -1, -1, null, null);
     }
+
+    public Sailboat(String name, int length, LocalDate buildYear){
+        this(name, "Unknown", -1, length, null, buildYear);
+    }
     //endregion
 
     //region Setters

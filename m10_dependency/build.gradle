@@ -11,7 +11,7 @@ dependencies {
     implementation 'org.hsqldb:hsqldb:2.7.1'
 }
 application {
-    mainClassName = 'be.kdg.sailboatproject.Main'
+    mainClassName = "be.kdg.sailboatproject.Launch"
 }
 
 javafx {

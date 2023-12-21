@@ -40,9 +40,29 @@ public class SailboatsView extends BorderPane {
         TableColumn<String, Sailboat> column3 = new TableColumn<>("Length");
         column3.setCellValueFactory(new PropertyValueFactory<>("length"));
         tableView.getColumns().addAll(column1, column2, column3);
-        HBox hbBottom = new HBox(tableView, dpBuild, tfLength, tfName);
+        HBox hbBottom = new HBox(tableView, dpBuild, tfLength, tfName, savebtn);
         hbBottom.setSpacing(10);
         super.setBottom(hbBottom);
         BorderPane.setMargin(hbBottom, new Insets(10));
+    }
+
+    TableView<Sailboat> getTableView() {
+        return this.tableView;
+    }
+
+    TextField getTfName() {
+        return this.tfName;
+    }
+
+    TextField getTfLength() {
+        return this.tfLength;
+    }
+
+    Button getSavebtn() {
+        return this.savebtn;
+    }
+
+    DatePicker getDpBuild() {
+        return this.dpBuild;
     }
 }
