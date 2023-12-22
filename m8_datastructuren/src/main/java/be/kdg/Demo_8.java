@@ -1,10 +1,17 @@
 package be.kdg;
 
+import be.kdg.kollections.Kollections;
+import be.kdg.kollections.lists.ArrayList;
+import be.kdg.kollections.lists.List;
+import be.kdg.model.Classification;
+import be.kdg.model.Sailboat;
+import be.kdg.model.SailboatFactory;
+
 import java.lang.reflect.InvocationTargetException;
+import java.time.LocalDate;
 
 public class Demo_8 {
     public static void main(String[] args) {
-        /*
         System.out.println(SailboatFactory.newEmptySailboat());
         System.out.println(SailboatFactory.newFilledSailboat("Sailboat", "Antwerp", 2.5, 10, Classification.Y, LocalDate.of(2010, 1, 1)));
         System.out.println(SailboatFactory.newRandomSailboat());
@@ -71,7 +78,6 @@ public class Demo_8 {
         System.out.println(Kollections.lineairSearch(test, test.get(4)));
         System.out.println(Kollections.binarySearch(test, SailboatFactory.newRandomSailboat()));
         System.out.println(Kollections.lineairSearch(test, SailboatFactory.newRandomSailboat()));
-        */
 
         try {
             PerformanceTester.compareListMapToHashMap(1000);

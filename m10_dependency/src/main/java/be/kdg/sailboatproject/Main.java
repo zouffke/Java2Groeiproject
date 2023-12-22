@@ -1,16 +1,13 @@
 package be.kdg.sailboatproject;
 
 import be.kdg.sailboatproject.database.SailboatDbDao;
-import be.kdg.sailboatproject.service.SailboatsServicelmpl;
+import be.kdg.sailboatproject.service.SailboatsServiceImpl;
 import be.kdg.sailboatproject.view.SailboatsPresenter;
 import be.kdg.sailboatproject.view.SailboatsView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class Main extends Application {
@@ -26,7 +23,7 @@ public class Main extends Application {
         L.info("Running start method on thread: " + Thread.currentThread().getName());
         SailboatsView sailboatsView = new SailboatsView();
         new SailboatsPresenter(sailboatsView,
-                new SailboatsServicelmpl(SailboatDbDao.getInstance()));
+                new SailboatsServiceImpl(SailboatDbDao.getInstance()));
         stage.setScene(new Scene(sailboatsView));
         stage.show();
     }

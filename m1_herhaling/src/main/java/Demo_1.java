@@ -34,6 +34,10 @@ public class Demo_1 {
 
         System.out.println(sailboats.sortedOnClassification());
 
-        Sailboat sailboat = new Sailboat("", 0, 0, null, LocalDate.of(2024, 1, 1));
+        try {
+            Sailboat sailboat = new Sailboat("", 0, 0, null, LocalDate.of(2024, 1, 1));
+        } catch (IllegalArgumentException e){
+            System.out.printf("Illegal argument exception caught: %s", e.getMessage());
+        }
     }
 }

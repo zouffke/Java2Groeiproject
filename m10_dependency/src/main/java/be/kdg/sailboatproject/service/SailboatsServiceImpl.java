@@ -5,7 +5,7 @@ import be.kdg.sailboatproject.model.Sailboat;
 
 import java.util.List;
 
-public class SailboatsServicelmpl implements SailboatsService {
+public class SailboatsServiceImpl implements SailboatsService {
 
     //region vars
 
@@ -15,7 +15,7 @@ public class SailboatsServicelmpl implements SailboatsService {
 
     //region constructors
 
-    public SailboatsServicelmpl(SailboatDao db){
+    public SailboatsServiceImpl(SailboatDao db){
         this.db = db;
     }
 
