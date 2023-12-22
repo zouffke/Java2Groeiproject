@@ -29,14 +29,14 @@ public class SailboatsView extends BorderPane {
         tfLength.setPromptText("Length");
         dpBuild = new DatePicker();
         dpBuild.setPromptText("Build year");
-        savebtn = new Button();
+        savebtn = new Button("Save");
         savebtn.setMinWidth(Button.USE_PREF_SIZE);
         super.setCenter(tableView);
         BorderPane.setMargin(tableView, new Insets(10));
         TableColumn<String, Sailboat> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TableColumn<LocalDate, Sailboat> column2 = new TableColumn<>("Build year");
-        column2.setCellValueFactory(new PropertyValueFactory<>("build year"));
+        TableColumn<LocalDate, Sailboat> column2 = new TableColumn<>("Build Year");
+        column2.setCellValueFactory(new PropertyValueFactory<>("buildYear"));
         TableColumn<String, Sailboat> column3 = new TableColumn<>("Length");
         column3.setCellValueFactory(new PropertyValueFactory<>("length"));
         tableView.getColumns().addAll(column1, column2, column3);
