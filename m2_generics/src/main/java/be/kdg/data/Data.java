@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class Data {
     /**
-     * Static method to get all the data for the Sailboats
+     * This method generates and returns a list of Sailboat objects.
+     * Each Sailboat object is initialized with specific parameters such as name, origin, draft, length, classification, and built date.
      *
-     * @return List of Sailboats
+     * @return a list of initialized Sailboat objects.
      */
     public static List<Sailboat> getData() {
         List<Sailboat> sailboats = new ArrayList<>();

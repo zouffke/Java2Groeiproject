@@ -2,6 +2,11 @@ package be.kdg.reflection;
 
 import java.lang.reflect.*;
 
+/**
+ * The ReflectionTools class provides static methods for analyzing a class using reflection.
+ * It can print various information about a class, such as its name, superclass, package, interfaces, constructors, attributes, and methods.
+ * It can also run methods that are annotated with a specific annotation.
+ */
 public class ReflectionTools {
     /**
      * Prints the class name, superclass name, package name, used interfaces, constructors, private attributes and functions of a class.
@@ -77,6 +82,20 @@ public class ReflectionTools {
         System.out.println(sB);
     }
 
+    /**
+     * Runs methods of a class that are annotated with the CanRun annotation.
+     * The methods must have a single parameter of type String.
+     * The value of the CanRun annotation is passed as the argument to the method.
+     *
+     * @param aClass The class whose methods are to be run.
+     * @return An instance of the class.
+     * @throws NoSuchMethodException if a matching method is not found.
+     * @throws SecurityException if a security violation occurred.
+     * @throws InstantiationException if the class that declares the underlying constructor represents an abstract class.
+     * @throws IllegalAccessException if this Constructor object is enforcing Java language access control and the underlying constructor is inaccessible.
+     * @throws IllegalArgumentException if the number of actual and formal parameters differ; if an unwrapping conversion for primitive arguments fails; or if, after possible unwrapping, a parameter value cannot be converted to the corresponding formal parameter type by a method invocation conversion.
+     * @throws InvocationTargetException if the underlying constructor throws an exception.
+     */
     public static Object runAnnotated(Class<?> aClass)
             throws NoSuchMethodException,
             SecurityException,
@@ -89,7 +108,8 @@ public class ReflectionTools {
 
         for (Method m : o.getClass().getDeclaredMethods()) {
             CanRun c = m.getDeclaredAnnotation(CanRun.class);
-            if (m.getParameterCount() == 1 && m.getParameterTypes()[0].getSimpleName().equals("String") && c != null){
+            Type[] params = m.getGenericParameterTypes();
+            if (params.length == 1 && params[0].getTypeName().equals("java.lang.String") && c != null){
                 m.invoke(o, c.value());
             }
         }

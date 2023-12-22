@@ -13,6 +13,7 @@ import java.util.Objects;
 public class Sailboat extends Boat implements Comparable<Sailboat> {
     //region vars
     private Classification classification;
+
     //endregion
 
     //region Constructors
@@ -71,7 +72,7 @@ public class Sailboat extends Boat implements Comparable<Sailboat> {
      * @see Sailboat#Sailboat(String, String, double, int, Classification, LocalDate)
      */
     public Sailboat() {
-        this("Unknown", "Unknown", -1, -1, null, LocalDate.EPOCH);
+        this("Unknown", "Unknown", -1, -1, Classification.UNKNOWN, LocalDate.EPOCH);
     }
     //endregion
 

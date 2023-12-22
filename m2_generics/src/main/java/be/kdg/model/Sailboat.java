@@ -75,7 +75,7 @@ public class Sailboat implements Comparable<Sailboat> {
      * @see Sailboat#Sailboat(String, String, double, int, Classification, LocalDate)
      */
     public Sailboat() {
-        this("Unknown", "Unknown", -1, -1, null, null);
+        this("Unknown", "Unknown", -1, -1, Classification.UNKNOWN, null);
     }
     //endregion
 

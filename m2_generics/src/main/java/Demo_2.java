@@ -6,13 +6,13 @@ import java.util.Random;
 
 public class Demo_2 {
     public static void main(String[] args) {
-        PriorityQueue<String> myQueue = new PriorityQueue<>();
+        var myQueue = new PriorityQueue<String>();
         myQueue.enqueue("Tokio", 2);
         myQueue.enqueue("Denver", 5);
         myQueue.enqueue("Rio", 2);
         myQueue.enqueue("Oslo", 3);
         System.out.println("Overzicht van de PriorityQueue:");
-        System.out.println(myQueue.toString());
+        System.out.println(myQueue);
         System.out.println("aantal: " + myQueue.getSize());
         System.out.println("positie van Tokio: " + myQueue.search("Tokio"));
         System.out.println("positie van Nairobi: " + myQueue.search("Nairobi"));
@@ -30,7 +30,7 @@ public class Demo_2 {
         }
 
         System.out.println("Overzicht van de PriorityQueue:");
-        System.out.println(sailboatsQue.toString());
+        System.out.println(sailboatsQue);
         System.out.println("aantal: " + sailboatsQue.getSize());
         for(int i = 0; i < 4; i++) {
             System.out.println("Dequeue: " + sailboatsQue.dequeue());
