@@ -5,7 +5,13 @@ import java.util.*;
 import java.util.function.Function;
 
 public class Sailboats {
+
+    //region vars
     private TreeSet<Sailboat> sailboats;
+
+    //endregion
+
+    //region
 
     public Sailboats() {
         this.sailboats = new TreeSet<>();

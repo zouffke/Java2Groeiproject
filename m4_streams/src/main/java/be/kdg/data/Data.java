@@ -7,10 +7,24 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class containing all data for the Sailboats
+ *
+ * @author Luca Dandois
+ * @version 1.0
+ * @see Sailboat
+ */
 public class Data {
+    /**
+     * This method generates and returns a list of Sailboat objects.
+     * Each Sailboat object is initialized with specific parameters such as name, origin, draft, length, classification, and built date.
+     *
+     * @return a list of initialized Sailboat objects.
+     */
     public static List<Sailboat> getData() {
         List<Sailboat> sailboats = new ArrayList<>();
 
+        // Adding Sailboat objects to the list
         sailboats.add(new Sailboat("Teraju", "Argentina", -1, 75, Classification.Y, LocalDate.of(1995, 1, 1)));
         sailboats.add(new Sailboat("Valtair", "Melbourne", 2.3, 65, Classification.CRUISER, LocalDate.of(1996, 1, 1)));
         sailboats.add(new Sailboat("Sanada", 3, 57, Classification.CRUISER, LocalDate.of(2008, 1, 1)));

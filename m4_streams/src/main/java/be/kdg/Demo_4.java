@@ -50,7 +50,8 @@ public class Demo_4 {
 
         System.out.println("\nboten gesorteerd op yachthaven en naam: ");
         dataList.stream()
-                .sorted(Comparator.comparing(Sailboat::getHarbour).thenComparing(Sailboat::getName))
+                .sorted(Comparator.comparing(Sailboat::getName))
+                .sorted(Comparator.comparing(Sailboat::getHarbour))
                 .forEach(System.out::println);
 
         System.out.println("\nNamen van alle boten in hoofdletters, omgekeerd gesorteerd en zonder dubbels:");
@@ -77,14 +78,14 @@ public class Demo_4 {
                 .filter(s -> s.toLowerCase().startsWith("s"))
                 .collect(Collectors.joining(", ")));
 
+        Map<Boolean, List<Sailboat>> partitioned = dataList.stream()
+                .collect(Collectors.partitioningBy(s -> s.getBuildYear().isAfter(LocalDate.of(2000, 1, 1))));
+
         System.out.println("\nSublist met zeilboten van voor 2000:");
-        dataList.stream()
-                .filter(s -> s.getBuildYear().isBefore(LocalDate.of(2000, 1, 1)))
-                .forEach(System.out::println);
+        partitioned.get(false).forEach(System.out::println);
+
         System.out.println("\nSublist met zeilboten van na 2000:");
-        dataList.stream()
-                .filter(s -> s.getBuildYear().isAfter(LocalDate.of(2000, 1, 1)))
-                .forEach(System.out::println);
+        partitioned.get(true).forEach(System.out::println);
 
         Map<Classification, List<Sailboat>> myList = dataList.stream()
                 .collect(Collectors.groupingBy(Sailboat::getClassification));
