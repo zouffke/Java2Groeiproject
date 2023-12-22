@@ -21,12 +21,17 @@ public class SailboatsPresenter {
         loadSailboats();
 
         sailboatsView.getSavebtn().setOnAction(event -> {
-            Sailboat sailboat = new Sailboat(
-                    sailboatsView.getTfName().getText(),
-                    Integer.parseInt(sailboatsView.getTfLength().getText()),
-                    sailboatsView.getDpBuild().getValue()
-            );
-            sailboatsService.addSailboat(sailboat);
+            try {
+                Sailboat sailboat = new Sailboat(
+                        sailboatsView.getTfName().getText(),
+                        Integer.parseInt(sailboatsView.getTfLength().getText()),
+                        sailboatsView.getDpBuild().getValue()
+                );
+
+                sailboatsService.addSailboat(sailboat);
+            } catch (SailboatException | IllegalArgumentException e) {
+                new Alert(Alert.AlertType.ERROR, "Error while adding new sailboat:\n" + e.getMessage()).showAndWait();
+            }
             loadSailboats();
         });
     }
