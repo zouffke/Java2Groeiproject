@@ -84,7 +84,7 @@ public class Sailboat implements Comparable<Sailboat>, Serializable {
      * @see Sailboat#Sailboat(String, String, double, int, Classification, LocalDate)
      */
     public Sailboat() {
-        this("Unknown", "Unknown", -1, -1, null, LocalDate.EPOCH);
+        this("Unknown", "Unknown", -1, -1, Classification.UNKNOWN, LocalDate.EPOCH);
     }
     //endregion
 

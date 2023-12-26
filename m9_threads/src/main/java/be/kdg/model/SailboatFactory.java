@@ -4,7 +4,14 @@ import java.time.LocalDate;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class provides factory methods for creating Sailboat objects.
+ * It includes methods for creating empty Sailboat objects, Sailboat objects with specific values, and random Sailboat objects.
+ */
 public class SailboatFactory {
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
     private SailboatFactory() {
     }
 
@@ -27,16 +34,30 @@ public class SailboatFactory {
      * @param classification the classification of the sailboat
      * @param buildYear      the build year of the sailboat
      * @return a new Sailboat instance with the provided values
-     * @see Sailboat#Sailboat(String, String, double, int, Classification, LocalDate)  Sailboat
      */
     public static Sailboat newFilledSailboat(String name, String harbour, double depth, int length, Classification classification, LocalDate buildYear) {
         return new Sailboat(name, harbour, depth, length, classification, buildYear);
     }
 
+    /**
+     * Generates a random character from the given array.
+     *
+     * @param array the array of characters to choose from
+     * @param r     the Random instance to use for generating the random index
+     * @return a random character from the array
+     */
     private static char getRandomChar(char[] array, Random r) {
         return array[r.nextInt(array.length)];
     }
 
+    /**
+     * Generates a random word of a given maximum length.
+     *
+     * @param maxWordLength the maximum length of the word
+     * @param initCap       whether the word should start with a capital letter
+     * @param r             the Random instance to use for generating the random characters
+     * @return a random word
+     */
     private static String generateWord(int maxWordLength, boolean initCap, Random r) {
         char[] vowels = {'a', 'e', 'i', 'o', 'u'};
         char[] consonants = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
@@ -58,6 +79,14 @@ public class SailboatFactory {
         return sb.toString();
     }
 
+    /**
+     * Generates a random string of a given maximum word length and word count.
+     *
+     * @param maxWordLength the maximum length of each word
+     * @param wordCount     the maximum number of words
+     * @param initCap       whether each word should start with a capital letter
+     * @return a random string
+     */
     private static String generateString(int maxWordLength, int wordCount, boolean initCap) {
         StringBuilder sb = new StringBuilder();
         Random r = new Random();
@@ -72,6 +101,11 @@ public class SailboatFactory {
         return sb.toString();
     }
 
+    /**
+     * Generates a random LocalDate between 1980-01-01 and the current date.
+     *
+     * @return a random LocalDate
+     */
     private static LocalDate generateDate() {
         long minDay = LocalDate.of(1980, 1, 1).toEpochDay();
         long maxDay = LocalDate.now().toEpochDay();
@@ -79,6 +113,11 @@ public class SailboatFactory {
         return LocalDate.ofEpochDay(randomDay);
     }
 
+    /**
+     * Creates a new instance of Sailboat with random values.
+     *
+     * @return a new Sailboat instance with random values
+     */
     public static Sailboat newRandomSailboat() {
         Random r = new Random();
         Classification[] c = Classification.values();

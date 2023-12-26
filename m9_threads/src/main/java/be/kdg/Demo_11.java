@@ -2,6 +2,7 @@ package be.kdg;
 
 import be.kdg.model.Classification;
 import be.kdg.model.Sailboat;
+import be.kdg.model.Sailboats;
 import be.kdg.threading.SailboatCallable;
 
 import java.util.List;
@@ -22,10 +23,12 @@ public class Demo_11 {
 
         final int TEST_COUNT = 100;
         long totalTime = 0;
-        long itemCount = 0;
         final int FUTURES = 3;
 
-        try (ExecutorService pool = Executors.newFixedThreadPool(3)) {
+        Sailboats sailboats = new Sailboats(3000);
+
+        ExecutorService pool = Executors.newFixedThreadPool(3);
+        try {
             for (int i = 0; i < TEST_COUNT; i++) {
 
                 long startTime = System.currentTimeMillis();
@@ -33,18 +36,27 @@ public class Demo_11 {
                 Future<List<Sailboat>> future2 = pool.submit(callable2);
                 Future<List<Sailboat>> future3 = pool.submit(callable3);
 
-                itemCount += future1.get().size();
-                itemCount += future2.get().size();
-                itemCount += future3.get().size();
+                for (Sailboat sailboat : future1.get()) {
+                    sailboats.add(sailboat);
+                }
+                for (Sailboat sailboat : future2.get()) {
+                    sailboats.add(sailboat);
+                }
+                for (Sailboat sailboat : future3.get()) {
+                    sailboats.add(sailboat);
+                }
+
                 totalTime += System.currentTimeMillis() - startTime;
             }
 
 
         } catch (Exception ignore) {
+        } finally {
+            pool.shutdown();
         }
 
         double avgTime = (double) totalTime / TEST_COUNT;
 
-        System.out.printf("%d Futures verzamelen elk %d dictators (gemiddelde uit %d runs): %f ms", FUTURES, itemCount / FUTURES / TEST_COUNT, TEST_COUNT, avgTime);
+        System.out.printf("%d Futures verzamelen elk %d sailboats (gemiddelde uit %d runs): %f ms", FUTURES, sailboats.getSize() / TEST_COUNT, TEST_COUNT, avgTime);
     }
 }
