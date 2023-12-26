@@ -7,7 +7,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used to generate a list of Sailboat objects.
+ */
 public class Data {
+    /**
+     * This method generates a list of Sailboat objects.
+     * Each Sailboat object is initialized with specific parameters such as name, origin, depth, length, classification, and built date.
+     * The list is then returned.
+     *
+     * @return a list of Sailboat objects
+     */
     public static List<Sailboat> getData() {
         List<Sailboat> sailboats = new ArrayList<>();
 

@@ -5,26 +5,47 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.logging.Logger;
 
+/**
+ * This class represents a collection of Sailboat objects.
+ * It provides methods to add, remove, search, and sort sailboats.
+ * It also provides a method to get the size of the collection and a toString method.
+ */
 public class Sailboats {
+    /**
+     * Logger instance used for logging messages.
+     */
     private static final Logger logger = Logger.getLogger("be.kdg.model.Sailboats");
+
+    /**
+     * TreeSet to store the Sailboat objects.
+     */
     private final TreeSet<Sailboat> sailboats;
 
+    /**
+     * Constructor that initializes the TreeSet.
+     */
     public Sailboats() {
         this.sailboats = new TreeSet<>();
     }
 
+    /**
+     * Adds a Sailboat object to the TreeSet.
+     *
+     * @param sailboat the Sailboat object to be added
+     * @return true if the Sailboat object was added successfully, false otherwise
+     */
     public boolean add(Sailboat sailboat) {
         logger.finer(String.format("Sailboat%n%sAdded to the list", sailboat));
         return sailboats.add(sailboat);
     }
 
     /**
-     * Removes a sailboat from the list
+     * Removes a sailboat from the TreeSet.
      *
-     * @param name           Name of the sailboat
-     * @param classification Classification of the sailboat
-     * @param buildYear      Build year of the sailboat
-     * @return true if the sailboat was removed, false if it was not found
+     * @param name           the name of the sailboat to be removed
+     * @param classification the classification of the sailboat to be removed
+     * @param buildYear      the build year of the sailboat to be removed
+     * @return true if the sailboat was removed successfully, false otherwise
      */
     public boolean remove(String name, Classification classification, LocalDate buildYear) {
         Sailboat tester = new Sailboat(name, classification, buildYear);
@@ -33,12 +54,12 @@ public class Sailboats {
     }
 
     /**
-     * Searches for a sailboat in the list
+     * Searches for a sailboat in the TreeSet.
      *
-     * @param name           Name of the sailboat
-     * @param classification Classification of the sailboat
-     * @param buildYear      Build year of the sailboat
-     * @return Sailboat if found, null if not found
+     * @param name           the name of the sailboat to be searched
+     * @param classification the classification of the sailboat to be searched
+     * @param buildYear      the build year of the sailboat to be searched
+     * @return the Sailboat object if found, null otherwise
      */
     public Sailboat search(String name, Classification classification, LocalDate buildYear) {
         Sailboat tester = new Sailboat(name, classification, buildYear);
@@ -46,10 +67,10 @@ public class Sailboats {
     }
 
     /**
-     * Sorts the sailboats on a given function
+     * Sorts the sailboats in the TreeSet based on a given function.
      *
-     * @param function Function to sort on
-     * @return Sorted list of sailboats
+     * @param function the function to be used for sorting
+     * @return a list of sorted Sailboat objects
      */
     public List<Sailboat> sortedBy(Function<Sailboat, Comparable> function) {
         List<Sailboat> sorted = new ArrayList<>(sailboats);
@@ -58,18 +79,18 @@ public class Sailboats {
     }
 
     /**
-     * Gets the size of the list
+     * Returns the size of the TreeSet.
      *
-     * @return Size of the list
+     * @return the size of the TreeSet
      */
     public int getSize() {
         return sailboats.size();
     }
 
     /**
-     * ToString of the sailboats
+     * Returns a string representation of the sailboats in the TreeSet.
      *
-     * @return String of the sailboats
+     * @return a string representation of the sailboats
      */
     @Override
     public String toString() {
