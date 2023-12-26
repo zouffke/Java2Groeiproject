@@ -6,7 +6,9 @@ import be.kdg.model.Sailboats;
 import jakarta.xml.bind.JAXBException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerConfigurationException;
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class ParserTest {
     }
 
     @Test
-    void testStaxDom() throws IOException, XMLStreamException, TransformerConfigurationException {
+    void testStaxDom() throws IOException, XMLStreamException, ParserConfigurationException, SAXException {
         SailboatStaxParser sailboatStaxParser = new SailboatStaxParser(sailboats, "datafiles/staxSailboats.xml");
         sailboatStaxParser.staxWriteXML();
 

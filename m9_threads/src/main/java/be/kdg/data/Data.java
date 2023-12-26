@@ -7,7 +7,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used to generate a list of Sailboat objects.
+ */
 public class Data {
+    /**
+     * This method generates a list of Sailboat objects.
+     * Each Sailboat object is initialized with specific parameters such as name, origin, depth, length, classification, and built date.
+     * The list is then returned.
+     *
+     * @return a list of Sailboat objects
+     */
     public static List<Sailboat> getData() {
         List<Sailboat> sailboats = new ArrayList<>();
 
@@ -21,7 +31,7 @@ public class Data {
         sailboats.add(new Sailboat("Alba", 1.9, 36, Classification.CRUISER, LocalDate.of(1976, 1, 1)));
         sailboats.add(new Sailboat("BlackPearl", "Houston", 5, 80, Classification.CRUISER, LocalDate.of(2023, 1, 1)));
         sailboats.add(new Sailboat("The big easy", "Stavoren", 1.55, 30, Classification.CRUISER, LocalDate.of(2000, 1, 1)));
-        sailboats.add(new Sailboat("Gladys", "Leeuwarden", 1.5, 34, Classification.CRUISER, LocalDate.of(1978, 1, 1)));
+        sailboats.add(new Sailboat("Hangard", "Brussel", 1.5, 34, Classification.CRUISER, LocalDate.of(1970, 1, 1)));
         sailboats.add(new Sailboat("Ricercare", "Corfu", 1.8, 49, Classification.CRUISER, LocalDate.of(1990, 1, 1)));
         sailboats.add(new Sailboat("River blues", 1.6, 37, Classification.CRUISE_RACER, LocalDate.of(2006, 1, 1)));
         sailboats.add(new Sailboat("Santana", 2, 75, Classification.CRUISER, LocalDate.of(1988, 1, 1)));

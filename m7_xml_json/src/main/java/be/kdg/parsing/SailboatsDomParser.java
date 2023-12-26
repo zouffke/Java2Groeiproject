@@ -3,83 +3,62 @@ package be.kdg.parsing;
 import be.kdg.model.Classification;
 import be.kdg.model.Sailboat;
 import be.kdg.model.Sailboats;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
-import javax.xml.namespace.QName;
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
+/**
+ * This class provides methods for parsing XML files into Sailboats objects using the DOM parser.
+ */
 public class SailboatsDomParser {
-    public static Sailboats domReadXML(String fileName) throws IOException, XMLStreamException {
-        XMLInputFactory factory = XMLInputFactory.newInstance();
-        XMLEventReader eventReader = factory.createXMLEventReader(new FileReader(fileName, StandardCharsets.UTF_8));
+
+    /**
+     * Parses an XML file into a Sailboats object.
+     * It reads the XML file using a DocumentBuilder and parses it into a Document object.
+     * It then gets the root element of the XML and retrieves a NodeList of 'sailboat' elements.
+     * For each 'sailboat' element, it creates a Sailboat object and adds it to a Sailboats object.
+     * The Sailboats object is then returned.
+     *
+     * @param fileName the name of the XML file to be parsed
+     * @return a Sailboats object containing the Sailboat objects parsed from the XML file
+     * @throws IOException if an I/O error occurs while reading the file
+     * @throws XMLStreamException if an error occurs while parsing the XML
+     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * @throws SAXException if any parse errors occur
+     */
+    public static Sailboats domReadXML(String fileName) throws IOException, XMLStreamException, ParserConfigurationException, SAXException {
+        Document doc = DocumentBuilderFactory.newInstance()
+                .newDocumentBuilder().parse(new File(fileName));
+        Element rootElement = doc.getDocumentElement();
 
         Sailboats sailboats = new Sailboats();
         Sailboat sailboat = new Sailboat();
 
-        while (eventReader.hasNext()) {
-            XMLEvent event = eventReader.nextEvent();
+        NodeList sailboatNodes = rootElement.getChildNodes();
 
-            switch (event.getEventType()) {
-                case XMLEvent.START_ELEMENT:
-                    if (!event.asStartElement().getName().getLocalPart().equalsIgnoreCase("sailboats")) {
-                        StartElement startElement = event.asStartElement();
-                        String tagName = startElement.getName().getLocalPart();
-
-                        String data;
-                        switch (tagName.toLowerCase()) {
-                            case "sailboat":
-                                sailboat.setName(startElement.getAttributeByName(new QName("name")).getValue());
-                                break;
-                            case "harbour":
-                                data = getCharContent(eventReader);
-                                if (data != null) sailboat.setHarbour(data);
-                                break;
-                            case "depth":
-                                data = getCharContent(eventReader);
-                                if (data != null) sailboat.setDepth(Double.parseDouble(data));
-                                break;
-                            case "length":
-                                data = getCharContent(eventReader);
-                                if (data != null) sailboat.setLength(Integer.parseInt(data));
-                                break;
-                            case "classification":
-                                data = getCharContent(eventReader);
-                                if (data != null) sailboat.setClassification(Classification.valueOf(data));
-                                break;
-                            case "build-year":
-                                data = getCharContent(eventReader);
-                                if (data != null) sailboat.setBuildYear(LocalDate.parse(data));
-                                break;
-                        }
-                    }
-                    break;
-
-                case XMLStreamConstants.END_ELEMENT:
-                    if (event.asEndElement().getName().getLocalPart().equalsIgnoreCase("sailboat")) {
-                        sailboats.add(sailboat);
-                        sailboat = new Sailboat();
-                    }
-                    break;
+        for (int i = 0; i < sailboatNodes.getLength(); i++) {
+            if (sailboatNodes.item(i).getNodeType() != Node.ELEMENT_NODE) {
+                continue;
             }
+            Element e = (Element) sailboatNodes.item(i);
+            sailboat.setName(e.getAttribute("name"));
+            sailboat.setHarbour(e.getElementsByTagName("harbour").item(0).getTextContent());
+            sailboat.setDepth(Double.parseDouble(e.getElementsByTagName("depth").item(0).getTextContent()));
+            sailboat.setLength(Integer.parseInt(e.getElementsByTagName("length").item(0).getTextContent()));
+            sailboat.setClassification(Classification.valueOf(e.getElementsByTagName("classification").item(0).getTextContent()));
+            sailboat.setBuildYear(LocalDate.parse(e.getElementsByTagName("build-year").item(0).getTextContent()));
+            sailboats.add(sailboat);
         }
+
         return sailboats;
-    }
-
-    private static String getCharContent(XMLEventReader eventReader) throws XMLStreamException {
-        if (!eventReader.hasNext()) return null;
-
-        XMLEvent event = eventReader.nextEvent();
-
-        if (event.getEventType() != XMLStreamConstants.CHARACTERS) return null;
-
-        return event.asCharacters().getData();
     }
 }
