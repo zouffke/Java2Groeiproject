@@ -1,0 +1,98 @@
+========================================================================================================================
+LUCA DANDOIS (INF203A)
+========================================================================================================================
+Log gemaakt op:   27/12/2023
+Basisklasse:      Sailboat.java
+Multiklasse:      Sailboats.java
+JDK version:      17
+------------------------------------------------------------------------------------------------------------------------
+A) GIT HISTORY:
+------------------------------------------------------------------------------------------------------------------------
+Commit freq p/w:  |.  .  |.  .  .  .  .  |.  .  .  .  |.  .  .  .  |.  .  .  .  .  |.  .  .  .  |.  .  .  .  |.  .  . 
+                  |Sep   |Oct            |Nov         |Dec         |Jan            |Feb         |Mar         |Apr     
+                   .  |.  .  .  .  .  |.  .  .  .  |.  .  .  .  .  |.  .  .  .  |.  .  4  3  |4  2  4  2  .  |.  2  2  2  |1  1  9  3  
+                      |May            |Jun         |Jul            |Aug         |Sep         |Oct            |Nov         |Dec         
+Aantal commits:   39
+Laatste commit:   26/12/2023
+Comments:         {Initial Commit, Added starting classes, Added starting classes2, Finished Groeiproject1, Finished W2, build failed, Fixed build fail, finished W2, Changed code to try and match M2 better, Finished part one of sprint 3, Finished part one of sprint 3, Module 3 afgewerkt, Started working on streams, Finsihed groeiproject4, Finished tests from w5, almost finished log files, Finished groeiproject5, small changes, Finsihed groeiproject 6, updated delete function, Finished w7 untill 2.6, finsihed w7. Need to fix w6 tests..., finished untill 4.1, Finished w8, Finished Maps, Finished W8b, finished w9, Finished m9bis, Started working on m10, Started working on 2.5, Started making SailboatsView.java, Application shows, 100 WARNINGS, Finished p10, fixed m1, Fixed m3, Fixed m4, fixed m10, Fixed m6, fixed m7, fixed m9}
+Openstaande TODO's: 0
+------------------------------------------------------------------------------------------------------------------------
+B) TELLINGEN:
+------------------------------------------------------------------------------------------------------------------------
+Aantal commits:          39 |          |++++++++++|  VEEL MEER dan de norm   (260%)
+Aantal modules:          10 |          |          |  EXACT de norm           (100%)
+Aantal JAVA files:       93 |          |          |  ONGEVEER de norm        (101%)
+Aantal regels code:    3048 |          |          |  ONGEVEER de norm        (103%)
+Aantal main classes:     10 |          |          |  EXACT de norm           (100%)
+Aantal build.gradle:     11 |          |          |  EXACT de norm           (100%)
+queries (JDBC):           8 |          |          |  EXACT de norm           (100%)
+Javadoc (HTML):          34 |        --|          |  MINDER dan de norm      ( 81%)
+Testmethoden(@Test):     18 |          |          |  EXACT de norm           (100%)
+------------------------------------------------------------------------------------------------------------------------
+C) CONTROLE VAN EXTERNE BESTANDEN:
+------------------------------------------------------------------------------------------------------------------------
+README.md:               1 OK
+XML files:               2 OK
+JSON file:               1 OK
+Logfiles:                6 OK
+Serialization file:      1 OK
+JDBC database:           3 OK
+------------------------------------------------------------------------------------------------------------------------
+D) ANALYSE VAN BASISKLASSE: Sailboat.java
+------------------------------------------------------------------------------------------------------------------------
+Fully qualified name:    be.kdg.model.Sailboat
+Interfaces:              Comparable 
+Aantal constructors:     4 OK
+Aantal attributen:       6 OK
+->	name, harbour, depth, length, classification, buildYear
+Waarvan private:         6
+Waarvan public:          0
+Ontbrekende types:       GEEN
+->	String, String, double, int, Classification, LocalDate
+Aantal getters:          6 OK
+Aantal setters:          6 OK
+toString:                1 OK
+equals en hashCode:      2 OK
+compareTo:               1 OK
+------------------------------------------------------------------------------------------------------------------------
+E) ANALYSE VAN DATAKLASSE: Data.java
+------------------------------------------------------------------------------------------------------------------------
+Fully qualified name:     be.kdg.data.Data
+Aantal elementen in List: 15 (OK)
+Lengte van toString:      163 chars (LANG)
+Eerste en laatste Sailboat-element:
+->	Name: Teraju                         Harbour: Argentina
+Depth: -1,00m                        Length: 75ft
+Classification: Y                    Build year: 1995-01-01
+
+->	Name: Optimist                       Harbour: Antwerp
+Depth: 0,50m                         Length: 5ft
+Classification: RACEBOAT             Build year: 1947-01-01
+
+------------------------------------------------------------------------------------------------------------------------
+F) CODE ANALYSE:
+------------------------------------------------------------------------------------------------------------------------
+m1_herhaling    : OK
+m2_generics     : OK
+m3_reflections  : OK
+m4_streams      : 1 fout
+	Ref: GP 4/3.2        Message: "Niet gesorteerd op 2 criteria"
+m5_logging      : OK
+m6_persistentie : 1 fout
+	Ref: GP 6/3.4.c      Message: "te weinig gebruik van close om connections en statements te sluiten" (actual: 2 expected: 5) Ik maak hier gebruik van de try with rescources om mijn connections te sluiten. => Cleaner code
+m7_xml_json     : OK
+m8_datastructuren: 3 fouten
+	Ref: GP 8/2.3        Message: "Stream.generate wordt niet gebruikt"
+	Ref: GP 8/2.2        Message: "Methode generateString werd onvoldoende uitgewerkt" (38%), Deze methode is opgesplits in verschillende prive methoden om de methode generateString niet alles te laten doen en de code makelijker leesbaar te maken.
+	Ref: GP 8/4.5        Message: "geen static teller aanwezig" compareCounter en equalsCounter zijn aanwezig in de basisklasse.
+m9_threads      : 1 fout
+	Ref: GP 9_bis/4.4    Message: "Elementen worden niet of op een foute manier aan ArrayBlockingQueue toegevoegd"
+m10_dependency  : OK
+========================================================================================================================
+Aantal modules met fouten: 4
+========================================================================================================================
+GEADVISEERDE SCORE: 85%  ->  17,0 / 20
+	 - Unieke fouten in opdrachten: 6
+
+GECORRIGEERDE SCORE:
+========================================================================================================================

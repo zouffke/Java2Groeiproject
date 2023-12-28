@@ -9,6 +9,7 @@ import be.kdg.model.SailboatFactory;
 
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
+import java.util.stream.Stream;
 
 public class Demo_8 {
     public static void main(String[] args) {
@@ -17,6 +18,8 @@ public class Demo_8 {
         System.out.println(SailboatFactory.newRandomSailboat());
 
         System.out.println("\n\n PART 2 \n\n");
+
+        Stream.generate(SailboatFactory::newRandomSailboat).limit(30).forEach(System.out::println);
 
         List<Sailboat> sbl = PerformanceTester.randomList(10);
 

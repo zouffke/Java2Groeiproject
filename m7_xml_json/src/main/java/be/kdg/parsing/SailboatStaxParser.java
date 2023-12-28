@@ -35,7 +35,6 @@ public class SailboatStaxParser {
      * @param path the path to the XML file
      * @throws IOException if an I/O error occurs while creating the FileWriter
      * @throws XMLStreamException if an error occurs while creating the XMLStreamWriter
-     * @throws TransformerConfigurationException if an error occurs while creating the IndentingXMLStreamWriter
      */
     public SailboatStaxParser(Sailboats sailboats, String path) throws IOException, XMLStreamException {
         this.sailboats = sailboats;

@@ -18,10 +18,6 @@ public class SailboatDbDao implements SailboatDao {
     private static Connection connection;
     private static SailboatDbDao instance;
 
-    private static Statement statement;
-    private static ResultSet resultSet;
-    private static PreparedStatement preparedStatement;
-
     //endregion
 
     //region constructors
@@ -66,10 +62,10 @@ public class SailboatDbDao implements SailboatDao {
         L.info("Creating table...");
         L.info("Checking if table is already there...");
         DatabaseMetaData dbm = connection.getMetaData();
-        resultSet = dbm.getTables(null, null, "SAILBOATTABLE", null);
+        ResultSet resultSet = dbm.getTables(null, null, "SAILBOATTABLE", null);
         if (!resultSet.next()) {
             L.info("Table 'sailboattable' does not exist yet. Creating now...");
-            statement = connection.createStatement();
+            Statement statement = connection.createStatement();
             statement.execute("CREATE TABLE sailboattable " +
                     "(id INTEGER NOT NULL IDENTITY" +
                     ", name VARCHAR(30) NOT NULL" +
@@ -95,9 +91,7 @@ public class SailboatDbDao implements SailboatDao {
     @Override
     public boolean insert(Sailboat sailboat) {
         String query = "INSERT INTO sailboattable VALUES (NULL, ?, ?, ?, ?, ?, ?)";
-        try {
-            preparedStatement = connection.prepareStatement(query);
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, sailboat.getName());
             preparedStatement.setString(2, sailboat.getHarbour());
             preparedStatement.setDouble(3, sailboat.getDepth());
@@ -105,11 +99,7 @@ public class SailboatDbDao implements SailboatDao {
             preparedStatement.setString(5, sailboat.getClassification().name());
             preparedStatement.setDate(6, Date.valueOf(sailboat.getBuildYear()));
 
-            boolean succes = preparedStatement.executeUpdate() > 0;
-
-            preparedStatement.close();
-
-            return succes;
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             L.warning(String.format("Something went wrong when trying to add a value to the DB.%n%s", e.getMessage()));
             throw new SailboatException(e);
@@ -120,24 +110,14 @@ public class SailboatDbDao implements SailboatDao {
     public boolean delete(String naam) {
         String query = "DELETE FROM sailboattable WHERE name = ?";
 
-        try {
-            preparedStatement = connection.prepareStatement(query);
-
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+             Statement statement = connection.createStatement()) {
             if (naam.equals("*")) {
-                statement = connection.createStatement();
-
-                boolean succes = statement.executeUpdate("DELETE FROM sailboattable") > 0;
-
-                statement.close();
-
-                return succes;
+                return statement.executeUpdate("DELETE FROM sailboattable") > 0;
             }
             preparedStatement.setString(1, naam);
 
-
-            boolean succes = preparedStatement.executeUpdate() > 0;
-            preparedStatement.close();
-            return succes;
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             L.warning(String.format("Something went wrong when trying to delete a record from the DB.%n%s", e.getMessage()));
             throw new SailboatException(e);
@@ -154,8 +134,7 @@ public class SailboatDbDao implements SailboatDao {
                 "classification=?," +
                 "buildyear=?" +
                 " WHERE id=?";
-        try {
-            preparedStatement = connection.prepareStatement(query);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setString(1, sailboat.getName());
             preparedStatement.setString(2, sailboat.getHarbour());
@@ -165,9 +144,7 @@ public class SailboatDbDao implements SailboatDao {
             preparedStatement.setDate(6, Date.valueOf(sailboat.getBuildYear()));
             preparedStatement.setInt(7, sailboat.getId());
 
-            boolean succes = preparedStatement.executeUpdate() > 0;
-            preparedStatement.close();
-            return succes;
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             L.warning(String.format("Something went wrong when trying to update the given object.%n%s", e.getMessage()));
             throw new SailboatException(e);
@@ -176,10 +153,8 @@ public class SailboatDbDao implements SailboatDao {
 
     @Override
     public Sailboat retrieve(String naam) {
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM sailboattable WHERE name = '" + naam + "'");
-            statement.close();
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM sailboattable WHERE name = '" + naam + "'")) {
             if (resultSet.next()) {
                 Sailboat sailboat = new Sailboat(
                         resultSet.getInt("id"),
@@ -189,10 +164,8 @@ public class SailboatDbDao implements SailboatDao {
                         resultSet.getInt("length"),
                         Classification.valueOf(resultSet.getString("classification")),
                         resultSet.getDate("buildyear").toLocalDate());
-                resultSet.close();
                 return sailboat;
             } else {
-                resultSet.close();
                 return null;
             }
         } catch (SQLException e) {
@@ -205,11 +178,10 @@ public class SailboatDbDao implements SailboatDao {
 
     @Override
     public List<Sailboat> execute(String query) {
-        try {
+        try (Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query)) {
             List<Sailboat> sailboats = new ArrayList<>();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-            statement.close();
+
             while (resultSet.next()) {
                 sailboats.add(new Sailboat(
                         resultSet.getInt("id"),
@@ -220,7 +192,6 @@ public class SailboatDbDao implements SailboatDao {
                         Classification.valueOf(resultSet.getString("classification")),
                         resultSet.getDate("buildyear").toLocalDate()));
             }
-            resultSet.close();
             return sailboats;
         } catch (SQLException e) {
             L.warning(String.format("Something went wrong when trying to give an ordered list of the DB.%n%s", e.getMessage()));

@@ -1,4 +1,23 @@
 unnamed package
+be.kdg
 be.kdg.data
 be.kdg.generics
+be.kdg.kollections
+be.kdg.kollections.lists
+be.kdg.kollections.maps
+be.kdg.kollections.sets
+be.kdg.kollections.trees
+be.kdg.logging
 be.kdg.model
+be.kdg.parsing
+be.kdg.persist
+be.kdg.reflection
+be.kdg.sailboatproject
+be.kdg.sailboatproject.data
+be.kdg.sailboatproject.database
+be.kdg.sailboatproject.exceptions
+be.kdg.sailboatproject.model
+be.kdg.sailboatproject.service
+be.kdg.sailboatproject.view
+be.kdg.threading
+be.kdg.util
